@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Administrativo - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoAdmin/crudProd.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuAdm.html">Menu</a>
+                <a href="./categoria.html">Categorias</a>
+                <a href="./produto.html">Produtos</a>
+                <a href="./estoque.html">Estoque</a>
+                <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
+                <a href="./fornecedor.html">Fornecedores</a>
+                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Produtos</h1>
+            <div id="listagem">
+                <h2>Produtos Cadastrados</h2>
+                <div id="resList"></div>
+            </div>
+            <br>
+            <hr>
+            <h2>Cadastrar Produto</h2>
+            <div id="cadastramento">
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" name="descricao">
+
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" name="preco" step="0.01" required>
+
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" name="modelo" required>
+                
+                <label for="categoria">Categoria:</label>
+                <input type="number" id="categoria" name="categoria" required>
+
+                <label for="imagem_url">URL da Imagem:</label>
+                <input type="url" id="imagem_url" name="imagem_url">
+
+                <button id="cadastrarProduto">Cadastrar</button>
+                    
+                <div id="resCad"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacao">
+                <h2>Atualizar Produto</h2>
+
+                <label for="codProduto">Código do Produto:</label>
+                <input type="text" id="codProduto" name="codProduto" required>
+
+                <label for="nomes">Nome:</label>
+                <input type="text" id="nomes" name="nome" required>
+
+                <label for="descricaos">Descrição:</label>
+                <input type="text" id="descricaos" name="descricao">
+
+                <label for="precos">Preço:</label>
+                <input type="number" id="precos" name="preco" step="0.01" required>
+
+                <label for="modelos">Modelo:</label>
+                <input type="text" id="modelos" name="modelo" required>
+
+                <label for="categorias">Categoria:</label>
+                <input type="number" id="categorias" name="categoria" required>
+
+                <label for="imagem_urls">URL da Imagem:</label>
+                <input type="url" id="imagem_urls" name="imagem_url">
+
+                <button id="atualizarProduto">Atualizar</button>
+
+                <div id="resAtul"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacaoParcial">
+                <h2>Atualizar Status</h2>
+
+                <label for="codProdutos">Código do Produto:</label>
+                <input type="text" id="codProdutos" name="codProduto" required>
+
+                <label for="ativo">Status:</label>
+                <select id="ativo" name="ativo" required>
+                    <option value="true">Ativo</option>
+                    <option value="false">Inativo</option>
+                </select>
+
+                <button id="atualizarStatusProduto">Atualizar Status</button>
+
+                <div id="resAtulPar"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="exclusao">
+                <h2>Excluir Produto</h2>
+
+                <label for="codProdutoss">Código do Produto:</label>
+                <input type="text" id="codProdutoss" name="codProduto" required>
+
+                <button id="excluirProduto">Excluir</button>
+
+                <div id="resExc"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

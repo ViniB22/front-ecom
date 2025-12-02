@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Administrativo - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoAdmin/crudForn.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuAdm.html">Menu</a>
+                <a href="./categoria.html">Categorias</a>
+                <a href="./produto.html">Produtos</a>
+                <a href="./estoque.html">Estoque</a>
+                <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
+                <a href="./fornecedor.html">Fornecedores</a>
+                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Fornecedores</h1>
+            <div id="listagem">
+                <h2>Fornecedores Cadastrados</h2>
+                <div id="resList"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="cadastramento">
+                <h2>Cadastrar Fornecedor</h2>
+
+                <label for="nomeEmpresa">Nome da Empresa:</label>
+                <input type="text" id="nomeEmpresa" name="nomeEmpresa" required>
+
+                <label for="cnpj">CNPJ:</label>
+                <input type="text" id="cnpj" name="cnpj" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone">
+
+                <button id="cadastrarFornecedor">Cadastrar</button>
+
+                <div id="resCad"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacao">
+                <h2>Atualizar Fornecedor</h2>
+
+                <label for="codFornecedor">Código do Fornecedor:</label>
+                <input type="text" id="codFornecedor" name="codFornecedor" required>
+
+                <label for="nomeEmpresas">Nome da Empresa:</label>
+                <input type="text" id="nomeEmpresas" name="nomeEmpresa" required>
+
+                <label for="cnpjs">CNPJ:</label>
+                <input type="text" id="cnpjs" name="cnpj" required>
+
+                <label for="emails">Email:</label>
+                <input type="email" id="emails" name="email">
+
+                <label for="telefones">Telefone:</label>
+                <input type="text" id="telefones" name="telefone">
+                
+                <button id="atualizarFornecedor">Atualizar</button>
+                
+                <div id="resAtul"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacaoParcial">
+                <h2>Atualizar Parcialmente Fornecedor</h2>
+
+                <label for="codFornecedors">Código do Fornecedor:</label>
+                <input type="text" id="codFornecedors" name="codFornecedor" required>
+
+                <label for="nomeEmpresass">Nome da Empresa:</label>
+                <input type="text" id="nomeEmpresass" name="nomeEmpresa">
+
+                <label for="cnpjss">CNPJ:</label>
+                <input type="text" id="cnpjss" name="cnpj">
+
+                <label for="emailss">Email:</label>
+                <input type="email" id="emailss" name="email">
+
+                <label for="telefoness">Telefone:</label>
+                <input type="text" id="telefoness" name="telefone">
+
+                <button id="atualizarParcialFornecedor">Atualizar</button>
+
+                <div id="resParAtul"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacao">
+                <h2>Excluir Fornecedor</h2>
+
+                <label for="codFornecedorsss">Código do Fornecedor:</label>
+                <input type="text" id="codFornecedorsss" name="codFornecedor" required>
+
+                <button id="excluirFornecedor">Excluir</button>
+
+                <div id="resExc"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

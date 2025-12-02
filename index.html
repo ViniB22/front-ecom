@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopStore</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="./assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./index.html">Home</a>
+                <a href="./public/login.html">Login</a>
+                <a href="./public/cadUser.html">Cadastrar</a>
+                <a href="./public/menuProd.html">Produtos</a>
+                <a href="./public/carrinho.html">Carrinho</a>
+                <a href="./public/menuAdm.html">Administração</a>
+                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="hero">
+            <h2>Bem-vindo à ShopStore</h2>
+            <p>Encontre os melhores produtos</p>
+            <button onclick="location.href='./public/produto.html'">Ver Produtos</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

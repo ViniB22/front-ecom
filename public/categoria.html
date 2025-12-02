@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Administrativo - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoAdmin/crudCatg.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuAdm.html">Menu</a>
+                <a href="./categoria.html">Categorias</a>
+                <a href="./produto.html">Produtos</a>
+                <a href="./estoque.html">Estoque</a>
+                <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
+                <a href="./fornecedor.html">Fornecedores</a>
+                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Produtos</h1>
+            <div id="listagem">
+                <h2>Categorias Cadastradas</h2>
+                <div id="resList"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="cadastramento">
+                <h2>Cadastrar Categoria</h2>
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="descricao">Descrição:</label>
+                <input type="text" id="descricao" name="descricao" required>
+
+                <button id="cadastrarCategoria">Cadastrar</button>
+
+                <div id="resCad"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacao">
+                <h2>Atualizar Categoria</h2>
+                
+                <label for="codCategoria">Código da Categoria:</label>
+                <input type="text" id="codCategoria" name="codCategoria" required>
+
+                <label for="nomes">Nome:</label>
+                <input type="text" id="nomes" name="nome" required>
+
+                <label for="descricaos">Descrição:</label>
+                <input type="text" id="descricaos" name="descricao" required>
+
+                <button id="atualizarCategoria">Atualizar</button>
+
+                <div id="resAtul"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="atualizacaoParcial">
+                <h2>Atualizar Status</h2>
+                
+                <label for="codCategorias">Código da Categoria:</label>
+                <input type="text" id="codCategorias" name="codCategoria" required>
+
+                <label for="is_ativo">Status:</label>
+                <select id="is_ativo" name="is_ativo" required>
+                    <option value="true">Ativo</option>
+                    <option value="false">Inativo</option>
+                </select>
+
+                <button id="atualizarStatusCategoria">Atualizar Status</button>
+
+                <div id="resAtulPar"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="exclusao">
+                <h2>Excluir Categoria</h2>
+
+                <label for="codCategoriass">Código da Categoria:</label>
+                <input type="text" id="codCategoriass" name="codCategoria" required>
+
+                <button id="excluirCategoria">Excluir</button>
+
+                <div id="resExc"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
