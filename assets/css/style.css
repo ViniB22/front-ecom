@@ -263,22 +263,33 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 th, td {
-    padding: 0.75rem;
+    padding: 1rem;
     text-align: left;
     border-bottom: 1px solid #ecf0f1;
 }
 
 th {
-    background: #34495e;
+    background: linear-gradient(135deg, #3498db, #2980b9);
     color: white;
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
 }
 
 tr:hover {
     background: #f8f9fa;
+    transition: background 0.3s;
+}
+
+tbody tr:last-child {
+    border-bottom: none;
 }
 
 /* Melhorias nos formulários */
@@ -538,9 +549,10 @@ label {
 .produto-card {
     background: white;
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
 }
 
 .produto-card:hover {
@@ -549,7 +561,7 @@ label {
 }
 
 .produto-card img {
-    width: 100%;
+    width: 75%;
     height: 200px;
     object-fit: cover;
     border-radius: 4px;

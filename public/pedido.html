@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finalizar Compra - ShopStore</title>
+    <title>Meus Pedidos - ShopStore</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/infoLoja/infoComp/compra.js" defer></script>
+    <script src="../assets/js/infoLoja/pedido.js" defer></script>
     <script src="../assets/js/logout.js" defer></script>
 </head>
 
@@ -20,7 +20,8 @@
             <div class="nav-links">
                 <a href="./menuProd.html">Produtos</a>
                 <a href="./carrinho.html">Carrinho</a>
-                <a href="./compra.html">Finalizar Compra</a>
+                <a href="./compra.html">Comprar</a>
+                <a href="./pedido.html">Meus Pedidos</a>
                 <button id="btnLogout" class="btn-logout">Sair</button>
             </div>
         </nav>
@@ -29,22 +30,13 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <h1>Finalizar Compra</h1>
-            <div id="produtosCompra">
-                <!-- Produtos serão carregados aqui -->
+            <h1>Meus Pedidos</h1>
+            <div id="pedidosList">
+                <!-- Pedidos serão carregados aqui -->
             </div>
-            <div id="totalCompra">
-                <!-- Total será calculado aqui -->
+            <div id="recibo" style="display: none;">
+                <!-- Recibo será mostrado aqui -->
             </div>
-            <div class="form-row">
-                <button id="btnPagamento" class="btn-primary">Selecionar Pagamento</button>
-                <button id="btnEndereco" class="btn-primary">Selecionar Endereço</button>
-            </div>
-            <div id="selecionados" class="box">
-                <p id="pagamentoSelecionado">Pagamento: Nenhum selecionado</p>
-                <p id="enderecoSelecionado">Endereço: Nenhum selecionado</p>
-            </div>
-            <button id="finalizarPedido" class="btn-success">Finalizar Pedido</button>
         </div>
     </main>
 

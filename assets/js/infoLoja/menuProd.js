@@ -1,4 +1,5 @@
 let produtosList = document.getElementById('produtosList')
+let categoriaSelect = document.getElementById('categoriaSelect')
 
 let tipo = sessionStorage.getItem('tipo')
 
@@ -14,7 +15,43 @@ const token = sessionStorage.getItem('token')
 onload = () =>{
     console.log('Token:', token);
     console.log('Tipo:', tipo);
-    fetch(`https://backecom-production.up.railway.app/produto`,{
+    loadCategorias()
+    loadProdutos()
+}
+
+function loadCategorias() {
+    fetch(`https://backecom-production.up.railway.app/categoria`,{
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(resp => {
+        if (!resp.ok) {
+            throw new Error('Erro na resposta');
+        }
+        return resp.json();
+    })
+    .then(categorias => {
+        if (Array.isArray(categorias)) {
+            categorias.forEach(cat => {
+                let option = document.createElement('option')
+                option.value = cat.codCategoria
+                option.textContent = cat.nome
+                categoriaSelect.appendChild(option)
+            })
+        }
+    })
+    .catch(err => console.error('Erro ao carregar categorias:', err))
+}
+
+function loadProdutos(categoria = '') {
+    let url = `https://backecom-production.up.railway.app/produto`
+    if (categoria) {
+        url += `?categoria=${categoria}`
+    }
+    fetch(url,{
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -34,21 +71,23 @@ onload = () =>{
     })
 }
 
+categoriaSelect.addEventListener('change', () => {
+    loadProdutos(categoriaSelect.value)
+})
+
 function mostrarProdutos(dados){
-    let html = '';
+    let html = '<div class="produtos-grid">';
     dados.forEach(dad => {
         html += `
-        <div class="box">
-            <div class="box-body">
-                <img src="${dad.imagem_url}" width="200px" onclick="ampliarImagem('${dad.imagem_url}', '${dad.nome}')"><br>
-                <h5 class="box-title">${dad.nome}</h5><br>
-                <p class="box-text">${dad.modelo}</p><br>
-                <p class="box-text">${dad.descricao}</p><br>
-                <p class="box-text">${dad.preco}</p><br>
-                <button class="btn btn-primary" onclick="adicionarAoCarrinho(${dad.codProduto})">Adicionar ao Carrinho</button>
-            </div>
+        <div class="produto-card fade-in">
+            <img src="${dad.imagem_url}" alt="${dad.nome}" onclick="ampliarImagem('${dad.imagem_url}', '${dad.nome}')">
+            <h3>${dad.nome}</h3>
+            <p class="descricao">${dad.modelo} - ${dad.descricao}</p>
+            <p class="preco">R$ ${dad.preco}</p>
+            <button class="btn btn-primary" onclick="adicionarAoCarrinho(${dad.codProduto})">Adicionar ao Carrinho</button>
         </div>`;
     });
+    html += '</div>';
     return html;
 }
 

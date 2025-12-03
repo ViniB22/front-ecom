@@ -1,6 +1,5 @@
 let carrinhoItems = document.getElementById('carrinhoItems');
 let totalDiv = document.getElementById('total');
-let finalizarCompraBtn = document.getElementById('finalizarCompra');
 
 let tipo = sessionStorage.getItem('tipo');
 
@@ -45,18 +44,36 @@ onload = () => {
                 let subtotal = prod.preco * qty;
                 total += subtotal;
                 itemsHtml += `
-                <div class="item">
-                    <img src="${prod.imagem_url}" width="100">
-                    <h5>${prod.nome}</h5>
-                    <p>Preço: R$ ${prod.preco}</p>
-                    <input type="number" value="${qty}" min="1" onchange="atualizarQuantidade(${id}, this.value)">
-                    <p>Subtotal: R$ ${subtotal.toFixed(2)}</p>
-                    <button onclick="removerItem(${id})">Remover</button>
+                <div class="carrinho-item fade-in">
+                    <img src="${prod.imagem_url}" alt="${prod.nome}">
+                    <div class="carrinho-item-info">
+                        <h3 class="carrinho-item-nome">${prod.nome}</h3>
+                        <p class="carrinho-item-preco">Preço: R$ ${prod.preco}</p>
+                        <div class="quantidade-controle">
+                            <button class="quantidade-btn" onclick="atualizarQuantidade(${id}, ${qty-1})">-</button>
+                            <input type="number" value="${qty}" min="1" onchange="atualizarQuantidade(${id}, this.value)" class="quantidade-input">
+                            <button class="quantidade-btn" onclick="atualizarQuantidade(${id}, ${qty+1})">+</button>
+                        </div>
+                        <p>Subtotal: R$ ${subtotal.toFixed(2)}</p>
+                    </div>
+                    <div class="carrinho-item-controles">
+                        <button class="remover-item" onclick="removerItem(${id})">Remover</button>
+                    </div>
                 </div>`;
             }
         });
         carrinhoItems.innerHTML = itemsHtml;
-        totalDiv.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
+        totalDiv.innerHTML = `
+        <div class="carrinho-resumo">
+            <h3 class="carrinho-total">Total: R$ ${total.toFixed(2)}</h3>
+            <div class="carrinho-acoes">
+                <button id="finalizarCompra" class="btn-success">Finalizar Compra</button>
+            </div>
+        </div>`;
+        // Add event listener after adding the button
+        document.getElementById('finalizarCompra').addEventListener('click', () => {
+            location.href = './compra.html';
+        });
     })
     .catch(err => console.error(err));
 }
@@ -79,7 +96,3 @@ function removerItem(id) {
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
     location.reload();
 }
-
-finalizarCompraBtn.addEventListener('click', () => {
-    location.href = './compra.html';
-});

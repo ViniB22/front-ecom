@@ -52,7 +52,7 @@ function loadProdutos() {
     })
     .then(resp => resp.json())
     .then(produtos => {
-        let html = '';
+        let html = '<table class="fade-in"><thead><tr><th>Imagem</th><th>Produto</th><th>Preço</th><th>Quantidade</th><th>Subtotal</th></tr></thead><tbody>';
         let total = 0;
         ids.forEach(id => {
             let prod = produtos.find(p => p.codProduto == id);
@@ -61,17 +61,18 @@ function loadProdutos() {
                 let subtotal = prod.preco * qty;
                 total += subtotal;
                 html += `
-                <div class="item">
-                    <img src="${prod.imagem_url}" width="100">
-                    <h5>${prod.nome}</h5>
-                    <p>Preço: R$ ${prod.preco}</p>
-                    <input type="number" value="${qty}" min="1" onchange="atualizarQty(${id}, this.value)">
-                    <p>Subtotal: R$ ${subtotal.toFixed(2)}</p>
-                </div>`;
+                 <tr>
+                     <td><img src="${prod.imagem_url}" alt="${prod.nome}" style="width: 80px; height: 80px; object-fit: cover;"></td>
+                     <td>${prod.nome}</td>
+                     <td>R$ ${prod.preco}</td>
+                     <td><input type="number" value="${qty}" min="1" onchange="atualizarQty(${id}, this.value)" style="width: 60px;"></td>
+                     <td>R$ ${subtotal.toFixed(2)}</td>
+                 </tr>`;
             }
         });
+        html += '</tbody></table>';
         produtosCompra.innerHTML = html;
-        totalCompra.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
+        totalCompra.innerHTML = `<div class="box"><h3>Total da Compra: R$ ${total.toFixed(2)}</h3></div>`;
     })
     .catch(err => console.error(err));
 }
@@ -173,11 +174,10 @@ finalizarPedidoBtn.addEventListener('click', () => {
                     });
                 });
                 Promise.all(promises).then(() => {
-                    alert('Pedido finalizado!');
                     localStorage.removeItem('carrinho');
                     sessionStorage.removeItem('selectedPagamento');
                     sessionStorage.removeItem('selectedEndereco');
-                    location.href = './menuProd.html';
+                    location.href = `./pedido.html?order=${idPedido}`;
                 });
             } else {
                 alert('Erro ao criar pedido');
