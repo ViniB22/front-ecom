@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoLoja/infoComp/compra.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuProd.html">Produtos</a>
+                <a href="./carrinho.html">Carrinho</a>
+                <a href="./compra.html">Finalizar Compra</a>
+                <button id="btnLogout" class="btn-logout">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Finalizar Compra</h1>
+            <div id="produtosCompra">
+                <!-- Produtos serão carregados aqui -->
+            </div>
+            <div id="totalCompra">
+                <!-- Total será calculado aqui -->
+            </div>
+            <div>
+                <button id="btnPagamento">Selecionar Pagamento</button>
+                <button id="btnEndereco">Selecionar Endereço</button>
+            </div>
+            <div id="selecionados">
+                <p id="pagamentoSelecionado">Pagamento: Nenhum selecionado</p>
+                <p id="enderecoSelecionado">Endereço: Nenhum selecionado</p>
+            </div>
+            <button id="finalizarPedido">Finalizar Pedido</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

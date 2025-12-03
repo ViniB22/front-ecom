@@ -1,5 +1,4 @@
 let btnLogin = document.getElementById('btnLogin')
-let btnLogout = document.getElementById('btnLogout')
 let res = document.getElementById('res')
 
 btnLogin.addEventListener('click', () => {
@@ -18,25 +17,46 @@ btnLogin.addEventListener('click', () => {
         },
         body: JSON.stringify(valores)
     })
-    .then(resp => resp.json())
+        .then(resp => {
+            console.log('Response status:', resp.status)
+            console.log('Response ok:', resp.ok)
+            return resp.json()
+        })
     .then(dados => {
-        sessionStorage.setItem('token', dados.token)
-        sessionStorage.setItem('nome', dados.usuario.nome)
-        sessionStorage.setItem('tipo', dados.usuario.tipo)
-
-        res.innerHTML += `Login realizado com sucesso!`
-        res.style.textAlign = 'center'
-        res.style.fontWeight = 'bold'
-
-        setTimeout(() => {
+        console.log(dados)
+        if (dados.mensagem) {
+            // Erro de login
+            sessionStorage.setItem('token', dados.token)
+            sessionStorage.setItem('nome', dados.usuario.nome)
+            sessionStorage.setItem('tipo', dados.usuario.tipo)
+            sessionStorage.setItem('idUsuario', dados.usuario.id)
             
-            // Redirecionar conforme tipo
-            if(dados.usuario.tipo === 'ADMIN') {
-                location.href = './menuAdm.html'
-            }else{
-                location.href = './menuProd.html'
-            }
-        }, 1500)
+            res.innerHTML = dados.mensagem
+            res.style.textAlign = 'center'
+            res.style.fontWeight = 'bold'
+            res.style.color = 'green'
+            
+            setTimeout(() => {
+                // Redirecionar conforme tipo
+                if (dados.usuario.tipo === 'ADMIN') {
+                    location.href = './menuAdm.html'
+                } else {
+                    location.href = './menuProd.html'
+                }
+            }, 1500)
+        } else {
+            // Login bem-sucedido
+            sessionStorage.setItem('token', dados.token)
+            sessionStorage.setItem('nome', dados.usuario.nome)
+            sessionStorage.setItem('tipo', dados.usuario.tipo)
+            sessionStorage.setItem('idUsuario', dados.usuario.id)
+
+            res.innerHTML = `Login realizado com sucesso!`
+            res.style.textAlign = 'center'
+            res.style.fontWeight = 'bold'
+            res.style.color = 'green'
+
+        }
     })
     .catch(err => {
         console.error('Erro:', err)

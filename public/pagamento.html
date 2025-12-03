@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Pagamentos - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoLoja/infoComp/pagamento.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuProd.html">Produtos</a>
+                <a href="./carrinho.html">Carrinho</a>
+                <a href="./compra.html">Finalizar Compra</a>
+                <button id="btnLogout" class="btn-logout">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Métodos de Pagamento</h1>
+
+            <!-- Formulário de Cadastro -->
+            <div id="formCadastro">
+                <h2>Cadastrar Método de Pagamento</h2>
+                <select id="metodo">
+                    <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                    <option value="PIX">PIX</option>
+                    <option value="BOLETO">Boleto</option>
+                    <option value="TRANSFERENCIA">Transferência</option>
+                    <option value="DEBITO">Débito</option>
+                </select>
+                <input type="text" id="numero_cartao" placeholder="Número do Cartão" style="display:none;">
+                <input type="text" id="validade" placeholder="Validade (MM/AA)" style="display:none;">
+                <input type="text" id="cvv" placeholder="CVV" style="display:none;">
+                <input type="text" id="nome_titular" placeholder="Nome do Titular" style="display:none;">
+                <button id="cadastrarPagamento">Cadastrar</button>
+                <div id="resCad"></div>
+            </div>
+
+            <!-- Lista de Pagamentos -->
+            <div id="listaPagamentos">
+                <h2>Seus Métodos de Pagamento</h2>
+                <div id="pagamentosList"></div>
+            </div>
+
+            <!-- Modal para Editar -->
+            <div id="modalEditar" style="display:none;">
+                <h2>Editar Método de Pagamento</h2>
+                <input type="hidden" id="editId">
+                <select id="editMetodo">
+                    <option value="CARTAO_CREDITO">Cartão de Crédito</option>
+                    <option value="PIX">PIX</option>
+                    <option value="BOLETO">Boleto</option>
+                    <option value="TRANSFERENCIA">Transferência</option>
+                    <option value="DEBITO">Débito</option>
+                </select>
+                <input type="text" id="editNumeroCartao" placeholder="Número do Cartão">
+                <input type="text" id="editValidade" placeholder="Validade">
+                <input type="text" id="editCvv" placeholder="CVV">
+                <input type="text" id="editNomeTitular" placeholder="Nome do Titular">
+                <button id="atualizarPagamento">Atualizar</button>
+                <button id="atualizarStatusPagamento">Atualizar Status</button>
+                <button id="excluirPagamento">Excluir</button>
+                <button onclick="fecharModal()">Fechar</button>
+                <div id="resEdit"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

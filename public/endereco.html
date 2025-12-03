@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Endereços - ShopStore</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/infoLoja/infoComp/endereco.js" defer></script>
+    <script src="../assets/js/logout.js" defer></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>ShopStore</h1>
+            </div>
+            <div class="nav-links">
+                <a href="./menuProd.html">Produtos</a>
+                <a href="./carrinho.html">Carrinho</a>
+                <a href="./compra.html">Finalizar Compra</a>
+                <button id="btnLogout" class="btn-logout">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>Gerenciar Endereços</h1>
+
+            <!-- Formulário de Cadastro -->
+            <div id="formCadastro">
+                <h2>Cadastrar Endereço</h2>
+                <input type="text" id="cep" placeholder="CEP" maxlength="9">
+                <input type="text" id="logradouro" placeholder="Logradouro">
+                <input type="text" id="complemento" placeholder="Complemento">
+                <input type="text" id="bairro" placeholder="Bairro">
+                <input type="text" id="localidade" placeholder="Cidade">
+                <input type="text" id="uf" placeholder="UF" maxlength="2">
+                <input type="text" id="numero" placeholder="Número">
+                <input type="text" id="apelido" placeholder="Apelido">
+                <label><input type="checkbox" id="is_principal"> Endereço Principal</label>
+                <button id="cadastrarEndereco">Cadastrar</button>
+                <div id="resCad"></div>
+            </div>
+
+            <!-- Lista de Endereços -->
+            <div id="listaEnderecos">
+                <h2>Seus Endereços</h2>
+                <div id="enderecosList"></div>
+            </div>
+
+            <!-- Modal para Editar -->
+            <div id="modalEditar" style="display:none;">
+                <h2>Editar Endereço</h2>
+                <input type="hidden" id="editId">
+                <input type="text" id="editCep" placeholder="CEP">
+                <input type="text" id="editLogradouro" placeholder="Logradouro">
+                <input type="text" id="editComplemento" placeholder="Complemento">
+                <input type="text" id="editBairro" placeholder="Bairro">
+                <input type="text" id="editLocalidade" placeholder="Cidade">
+                <input type="text" id="editUf" placeholder="UF">
+                <input type="text" id="editNumero" placeholder="Número">
+                <input type="text" id="editApelido" placeholder="Apelido">
+                <label><input type="checkbox" id="editIsPrincipal"> Endereço Principal</label>
+                <button id="atualizarEndereco">Atualizar</button>
+                <button id="atualizarStatusEndereco">Atualizar Status</button>
+                <button id="excluirEndereco">Excluir</button>
+                <button onclick="fecharModal()">Fechar</button>
+                <div id="resEdit"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 ShopStore. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>

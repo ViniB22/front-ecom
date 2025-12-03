@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Administrativo - ShopStore</title>
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/infoAdmin/crudForn.js" defer></script>
+    <script src="../assets/js/infoAdmin/crudEstoque.js" defer></script>
     <script src="../assets/js/logout.js" defer></script>
 </head>
 
@@ -24,7 +24,7 @@
                 <a href="./estoque.html">Estoque</a>
                 <a href="./produtoFornecedor.html">Produto-Fornecedor</a>
                 <a href="./fornecedor.html">Fornecedores</a>
-                <button id="btnLogout" class="btn-logout" onclick="logout()">Sair</button>
+                <button id="btnLogout" class="btn-logout">Sair</button>
             </div>
         </nav>
     </header>
@@ -33,52 +33,90 @@
     <main class="main-content">
         <div class="container">
             <h1>Gerenciar Estoque</h1>
+            <div id="listagem">
+                <h2>Estoques Cadastrados</h2>
+                <div id="resList"></div>
+            </div>
+            <br>
+            <hr>
             <div id="cadastramento">
                 <h2>Cadastrar Estoque</h2>
 
-                <label for="nomeEmpresa">Nome da Empresa:</label>
-                <input type="text" id="nomeEmpresa" name="nomeEmpresa" required>
+                <label for="produto">Produto:</label>
+                <select id="produto" name="produto" required>
+                    <option value="">Selecione um produto</option>
+                </select>
 
-                <label for="cnpj">CNPJ:</label>
-                <input type="text" id="cnpj" name="cnpj" required>
+                <label for="quantidade_atual">Quantidade Atual:</label>
+                <input type="number" id="quantidade_atual" name="quantidade_atual" min="0" required>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
-
-                <label for="telefone">Telefone:</label>
-                <input type="text" id="telefone" name="telefone">
+                <label for="quantidade_minima">Quantidade Mínima:</label>
+                <input type="number" id="quantidade_minima" name="quantidade_minima" min="0">
 
                 <button id="cadastrarEstoque">Cadastrar</button>
 
                 <div id="resCad"></div>
             </div>
-
-            <div id="listagem">
-                <h2>Estoquees Cadastrados</h2>
-                <div id="resList"></div>
-            </div>
+            <br>
+            <hr>
             <div id="atualizacao">
-                <h2>Atualizar Estoque</h2>
+                <h2>Atualizar Estoque Completo</h2>
 
                 <label for="codEstoque">Código do Estoque:</label>
                 <input type="text" id="codEstoque" name="codEstoque" required>
 
-                <label for="nomeEmpresas">Nome da Empresa:</label>
-                <input type="text" id="nomeEmpresas" name="nomeEmpresa" required>
+                <label for="produtos">Produto:</label>
+                <select id="produtos" name="produto" required>
+                    <option value="">Selecione um produto</option>
+                </select>
 
-                <label for="cnpjs">CNPJ:</label>
-                <input type="text" id="cnpjs" name="cnpj" required>
+                <label for="quantidade_atuals">Quantidade Atual:</label>
+                <input type="number" id="quantidade_atuals" name="quantidade_atual" min="0" required>
 
-                <label for="emails">Email:</label>
-                <input type="email" id="emails" name="email">
-
-                <label for="telefones">Telefone:</label>
-                <input type="text" id="telefones" name="telefone">
+                <label for="quantidade_minimas">Quantidade Mínima:</label>
+                <input type="number" id="quantidade_minimas" name="quantidade_minima" min="0">
 
                 <button id="atualizarEstoque">Atualizar</button>
 
                 <div id="resAtul"></div>
             </div>
+            <br>
+            <hr>
+            <div id="atualizacaoParcial">
+                <h2>Atualizar Estoque Parcialmente</h2>
+
+                <label for="codEstoqueParcial">Código do Estoque:</label>
+                <input type="text" id="codEstoqueParcial" name="codEstoqueParcial" required>
+
+                <label for="produtosParcial">Produto (opcional):</label>
+                <select id="produtosParcial" name="produtoParcial">
+                    <option value="">Selecione um produto</option>
+                </select>
+
+                <label for="quantidade_atualParcial">Quantidade Atual (opcional):</label>
+                <input type="number" id="quantidade_atualParcial" name="quantidade_atualParcial" min="0">
+
+                <label for="quantidade_minimaParcial">Quantidade Mínima (opcional):</label>
+                <input type="number" id="quantidade_minimaParcial" name="quantidade_minimaParcial" min="0">
+
+                <button id="atualizarParcialEstoque">Atualizar Parcialmente</button>
+
+                <div id="resAtulParcial"></div>
+            </div>
+            <br>
+            <hr>
+            <div id="deletar">
+                <h2>Deletar Estoque</h2>
+
+                <label for="codEstoqueDelete">Código do Estoque:</label>
+                <input type="text" id="codEstoqueDelete" name="codEstoqueDelete" required>
+
+                <button id="deletarEstoque">Deletar</button>
+
+                <div id="resDelete"></div>
+            </div>
+            <br>
+            <hr>
         </div>
     </main>
 
