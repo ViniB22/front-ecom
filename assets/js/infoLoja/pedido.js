@@ -14,11 +14,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const orderId = urlParams.get('order');
 
 onload = () => {
-    if (orderId) {
-        showRecibo(orderId);
-    } else {
-        loadPedidos();
-    }
+    loadPedidos();
 }
 
 function loadPedidos() {
@@ -43,7 +39,6 @@ function loadPedidos() {
                 <p>Data: ${new Date(pedido.dataPedido).toLocaleDateString('pt-BR')}</p>
                 <p>Total: R$ ${pedido.valorTotal}</p>
                 <p>Status: ${pedido.status || 'Pendente'}</p>
-                <button class="btn-info" onclick="showRecibo(${pedido.codPedido})">Ver Recibo</button>
             </div>`;
         });
         html += '</div>';
@@ -102,16 +97,16 @@ function showRecibo(codPedido) {
                         </tr>
                     </thead>
                     <tbody>`;
-            if (Array.isArray(itens)) {
-                itens.forEach(item => {
-                    html += `
-                    <tr>
-                        <td>${item.produto ? item.produto.nome : 'Produto'}</td>
-                        <td>${item.quantidade}</td>
-                        <td>R$ ${item.precoUnitario}</td>
-                        <td>R$ ${item.valorTotalItem}</td>
-                    </tr>`;
-                });
+           if (Array.isArray(itens)) {
+               itens.forEach(item => {
+                   html += `
+                   <tr>
+                       <td>${item.produtoItem ? item.produtoItem.nome : 'Produto'}</td>
+                       <td>${item.quantidade}</td>
+                       <td>R$ ${item.precoUnitario}</td>
+                       <td>R$ ${item.valorTotalItem}</td>
+                   </tr>`;
+               });
             } else {
                 html += `<tr><td colspan="4">Erro ao carregar itens</td></tr>`;
             }
